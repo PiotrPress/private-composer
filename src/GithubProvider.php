@@ -52,12 +52,25 @@ class GithubProvider implements ProviderInterface {
 
         if ( ! $content = \reset( $this->getContents( $url ) ) ) return null;
 
-        $content[ 'dist' ] = [
+        $content[ 'dist' ] = $this->prepareDist( $repository, $reference );
+        $content[ 'source' ] = $this->prepareSource( $repository, $reference );
+
+        return new Package( $repository, $reference, $content );
+    }
+
+    protected function prepareDist( Repository $repository, Reference $reference ) {
+        return [
             'type' => 'zip',
             'url' => (string)$this->prepareUrl( "/repos/{$this->owner}/{$repository->getName()}/zipball/{$reference->getHash()}" )
         ];
+    }
 
-        return new Package( $repository, $reference, $content );
+    protected function prepareSource( Repository $repository, Reference $reference ) {
+        return [
+            'type' => 'git',
+            'url' => "git@{$this->host}:{$this->owner}/{$repository->getName()}.git",
+            'reference' => $reference->getHash()
+        ];
     }
 
     protected function prepareUrl( string $path ) : Url {
