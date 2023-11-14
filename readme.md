@@ -179,6 +179,24 @@ $ composer config --global http-basic.example.com username app_password
 - `owner` - BitBucket's `workspace`
 - `host` - API endpoint domain, if empty it's equivalent: `bitbucket.org`
 
+## Usage as a `command`
+
+```shell
+$ composer stream[-dump] <github|bitbucket>://<owner>[@<host>]
+```
+
+Command's output is a valid `packages.json` file content.
+
+### Example
+
+```shell
+$ composer stream github://PiotrPress > packages.json
+```
+
+## Note
+
+If there are many repositories to scan, it may be necessary to increase the process [timeout](https://getcomposer.org/doc/articles/scripts.md#managing-the-process-timeout).
+
 ## Requirements
 
 - PHP >= `7.4` version.

@@ -50,7 +50,8 @@ class GithubProvider implements ProviderInterface {
     public function getPackage( Repository $repository, Reference $reference ) : ?Package {
         $url = $this->prepareUrl( "/repos/{$this->owner}/{$repository->getName()}/contents/composer.json?ref={$reference->getHash()}" );
 
-        if ( ! $content = \reset( $this->getContents( $url ) ) ) return null;
+        $array = $this->getContents( $url );
+        if ( ! $content = \reset( $array ) ) return null;
 
         $content[ 'dist' ] = $this->prepareDist( $repository, $reference );
         $content[ 'source' ] = $this->prepareSource( $repository, $reference );
