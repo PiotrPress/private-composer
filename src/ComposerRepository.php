@@ -1,6 +1,6 @@
 <?php declare( strict_types = 1 );
 
-namespace PiotrPress\Composer\Streams;
+namespace PiotrPress\PrivateComposer;
 
 use Composer\IO\IOInterface;
 

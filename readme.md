@@ -1,8 +1,8 @@
-# Composer Streams
+# Private Composer
 
-This composer plugin adds `github` and `bitbucket` streams support to Composer in order to simplify [private repositories](https://getcomposer.org/doc/05-repositories.md#using-private-repositories) handling.
+This composer plugin adds `github` and `bitbucket` protocols support to Composer in order to simplify [private repositories](https://getcomposer.org/doc/05-repositories.md#using-private-repositories) handling.
 
-Composer Streams uses **GitHub** and **BitBucket** APIs to build `packages.json` virtual file on the fly, with all packages from owner's repositories, which can be used in repository type `composer` in `composer.json` file.
+Private Composer uses **GitHub** and **BitBucket** APIs to build `packages.json` virtual file on the fly, with all packages from owner's repositories, which can be used in repository type `composer` in `composer.json` file.
 
 ## Example
 
@@ -27,7 +27,7 @@ Instead of manually adding each one repository separately to `composer.json` fil
 }
 ```
 
-use (in this example) `github` stream:
+use (in this example) `github` protocol:
 
 ```json
 {
@@ -49,13 +49,13 @@ use (in this example) `github` stream:
 1. Add the plugin as a global composer requirement:
 
 ```shell
-$ composer global require piotrpress/composer-streams
+$ composer global require piotrpress/private-composer
 ```
 
 2. Allow the plugin execution:
 
 ```shell
-$ composer config -g allow-plugins.piotrpress/composer-streams true
+$ composer config -g allow-plugins.piotrpress/private-composer true
 ```
 
 ## Authentication
@@ -84,7 +84,7 @@ $ composer config --global http-basic.example.com x-oauth-basic token
 
 - `host` - GitHub's domain, if empty it's equivalent: `github.com`
 - `username` - always `x-oauth-basic`
-- `password` - GitHub's `token` (generate new one using this [link](https://github.com/settings/tokens/new?scopes=repo&description=Composer-Streams))
+- `password` - GitHub's `token` (generate new one using this [link](https://github.com/settings/tokens/new?scopes=repo&description=Private-Composer))
 
 ### BitBucket
 
@@ -182,7 +182,7 @@ $ composer config --global http-basic.example.com username app_password
 ## Usage as a `command`
 
 ```shell
-$ composer stream[-dump] <github|bitbucket>://<owner>[@<host>]
+$ composer packages <github|bitbucket>://<owner>[@<host>]
 ```
 
 Command's output is a valid `packages.json` file content.
@@ -190,7 +190,7 @@ Command's output is a valid `packages.json` file content.
 ### Example
 
 ```shell
-$ composer stream github://PiotrPress > packages.json
+$ composer packages github://PiotrPress > packages.json
 ```
 
 ## Note

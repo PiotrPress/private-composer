@@ -1,6 +1,6 @@
 <?php declare( strict_types = 1 );
 
-namespace PiotrPress\Composer\Streams;
+namespace PiotrPress\PrivateComposer;
 
 interface ProviderInterface {
     public function __construct( string $owner, string $host = '', array $auth = [] );

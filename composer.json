@@ -1,17 +1,17 @@
 {
-  "name": "piotrpress/composer-streams",
+  "name": "piotrpress/private-composer",
   "type": "composer-plugin",
   "license": "MIT",
-  "description": "This composer plugin adds github and bitbucket streams support to Composer in order to simplify private repositories handling.",
-  "homepage": "https://PiotrPress",
+  "description": "This composer plugin adds github and bitbucket protocols support to Composer in order to simplify private repositories handling.",
+  "homepage": "https://github.com/PiotrPress/private-composer",
   "authors": [
     {
       "name": "Piotr Niewiadomski",
-      "homepage": "https://github.com/PiotrPress"
+      "homepage": "https://piotr.press"
     }
   ],
   "keywords": [
-    "composer", "composer plugin", "stream", "streams", "github", "bitbucket", "php"
+    "composer", "private", "private-repository", "private-packagist", "packagist", "composer plugin", "stream", "streams", "github", "bitbucket", "protocols", "php"
   ],
   "require": {
     "php": ">=7.4",
@@ -20,11 +20,11 @@
     "piotrpress/remoter": "^1.0"
   },
   "extra": {
-    "class": "PiotrPress\\Composer\\Streams\\Plugin"
+    "class": "PiotrPress\\PrivateComposer\\Plugin"
   },
   "autoload": {
     "psr-4": {
-      "PiotrPress\\Composer\\Streams\\": "src/"
+      "PiotrPress\\PrivateComposer\\": "src/"
     },
     "classmap": [
       "src"
