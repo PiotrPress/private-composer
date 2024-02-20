@@ -18,7 +18,7 @@ class ComposerCommand extends BaseCommand {
     }
 
     protected function execute( InputInterface $input, OutputInterface $output ) : int {
-        if ( ! \in_array( ( new Url( $url = $input->getArgument( 'packages' ) . '/packages.json' ) )->getScheme(), [ 'github', 'bitbucket' ] ) )
+        if ( ! \in_array( ( new Url( $url = $input->getArgument( 'url' ) . '/packages.json' ) )->getScheme(), [ 'github', 'bitbucket' ] ) )
             throw new \InvalidArgumentException( 'URL must be either github:// or bitbucket:// protocol' );
 
         $output->write( \file_get_contents( $url ) );
